@@ -33,7 +33,7 @@ int main(int argc, char const *argv[])
     channel.ack(tag);
   };
 
-  channel.declareQueue("task_queue", AMQP::durable | AMQP::autodelete);
+  channel.declareQueue("task_queue", AMQP::durable);
   channel.setQos(1, false);
   channel.consume("task_queue")
     .onReceived(message_cb)
